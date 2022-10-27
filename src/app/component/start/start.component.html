@@ -1,0 +1,153 @@
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * The content below * * * * * * * * * * * -->
+<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->
+<!-- * * * * * * * * * * and can be replaced. * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * Delete the template below * * * * * * * * * * -->
+<!-- * * * * * * * to get started with your project! * * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+
+<div class="container-fluid"  style="height: 1800px">
+
+  <div class="row" style="height: 45%" id="mainHeader">
+
+    <div id="navbarDIV" style="height: 10%;">
+      <nav class="navbar d-flex" id="navID">
+        <span class="navbar-brand"></span>
+        <div class="d-flex flex-row-reverse">
+          <a *ngFor="let t of navText; let i=index" href="{{navURL[i]}}" >{{navText[i]}}</a>
+        </div>
+      </nav>
+    </div>
+
+    <div  id="" style="height: 40%;color: white;display: flex;flex-direction: column">
+
+      <div style="text-align: center;height: 20%"  >
+        <h1> ASCT+B Explorer</h1>
+      </div>
+
+      <div class="" style="padding-top: 1%; height: 40%;flex-wrap: nowrap;justify-items: center;display: grid">
+        The ASCT+B Explorer is a visualization tool for displaying anatomical structures, cell <br> types, and biomarker (ASCT+B) authored by domain
+        experts for different human organs. <br> The tables are used to develop a common coordinate framework (CCF) of the <br> healthy human body, represented as knowledge graph. See also
+        Hubmap Consortium website.
+      </div>
+
+      <div class="justify-content-center d-flex" style="display:flex;align-items:flex-end; height: 40%;">
+        <button class="btn-primary btn-lg" (click)="goToVis()" style="height: 50%;align-items: center;display: grid" > Go to Visualization</button>
+      </div>
+
+
+    </div>
+
+    <div  class="d-flex justify-content-center align-items-center" style="height: 50%">
+      <img  *ngFor="let name of previewData" class="w-100  h-100 "  src="{{name}}" style="min-width: 0" > <!-- src="../assets/{{name}}" -->
+    </div>
+
+  </div>
+  <div class="row" style="height: 50%" id="about">
+
+    <div class="row d-flex justify-content-center" style="height: 18%; padding-bottom: 1%;padding-top: 1%;width: 100%" id="aboutText">
+      <div class="col-md-3"></div>
+      <div class="col-md-6">
+        <h2>ABOUT</h2>
+        <p> {{aboutText}} </p>
+      </div>
+      <div class="col-md-3"></div>
+    </div>
+
+    <div class="d-flex" style="height: 87%" id="aboutMain">
+
+      <div class="col-md-1"></div>
+      <div class="col-md-5 h-75" id="actionsHeight">
+        <div *ngFor="let t of videoTitle; let i=index" class="divPAD" style="height: 16.5%">
+          <button class="section-selector w-75 " id="btn{{i}}" (click)="displayText(i)">
+            <p class="ss-header"> {{videoTitle[i]}}</p>
+            <p class="ss-desc">  {{videoDescription[i]}}</p>
+          </button>
+        </div>
+      </div>
+
+      <div *ngFor="let t of videoImages; let i=index" id="Imag{{i}}" class="col-md-5 h-75" style="visibility: hidden; display: none;flex-direction: column">
+        <div class="h-50">
+          <img  class="w-100 h-100"  src="{{videoImages[i]}}"  style="min-width: 0;">
+        </div>
+        <div style="height: 10%">
+
+        </div>
+        <div  style="height: 40%; display: flex;flex-direction: column">
+          {{videoText[i]}}
+        </div>
+      </div>
+
+
+
+
+      <div class="col-md-1"></div>
+    </div>
+  </div>
+
+
+
+
+  <div class="row" style="height: 15%" id="collab">
+    <div class="row" style="height: 2%">
+
+    </div>
+    <div class="row" style="height: 5%;text-align: center;color: white">
+        <h1> Collaborator </h1>
+    </div>
+    <div class="row" style="height: 18%">
+
+    </div>
+    <div class="row" style="height: 63%">
+
+      <div class="w-100 h-100" style="display: flex;justify-content: space-between">
+
+      <div *ngFor="let name of creditsName;let i=index" style="color: white;text-align: center">
+        <div class="row w-100 h-50">
+          <img  class="w-100  h-100 "  src="{{usercircle}}"> <!-- src="../assets/{{name}}" -->
+        </div>
+        <div class="row w-100 h-50" style="display: flex; align-items: flex-end;white-space: nowrap">
+          <p> {{name}} <br>
+            {{creditsEmail[i]}}<br>
+        </div>
+      </div>
+
+      </div>
+
+    </div>
+      <p class="row" style="text-align: end;color: white;display: flex;justify-content: end"><a id="impressumA" href="javascript:void(0)" (click)="openImprint()">Imprint</a> </p>
+
+
+  </div>
+
+</div>
+
+
+<!--- All credits for the imprint text go to https://www.impressum-generator.de/impressum-generator/-->
+
+
+<div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-modal="true"
+     role="dialog" (click)="closeImprint()">
+  <div class="modal-dialog h-100 d-flex justify-content-center align-items-center" style="transform: translateY(-15%)" role="document">
+    <div class="modal-content ">
+      <div class="modal-header ">
+        <h5 class="w-100" style="text-align: center" id="exampleModalLabel" >Impressum</h5>
+      </div>
+      <div class="modal-body">
+        <h1>Impressum</h1><p>Angaben gemäß § 5 TMG</p><p>Philipp Hekeler <br>
+        Steinbößstr. 68<br>
+        72074 Tübingen <br>
+      </p><p> <strong>Vertreten durch: </strong><br>
+        Philipp Hekeler<br>
+      </p><p><strong>Kontakt:</strong> <br>
+        Telefon: 01573 7797360<br>
+        E-Mail: <a href='mailto:philipp-christoph.hekeler@uni-tuebingen.de'>philipp-christoph.hekeler@uni-tuebingen.de</a> </p><p><br>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" (click)=closeImprint()>Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal-backdrop fade show" id="backdrop2" style="display: none;"></div>

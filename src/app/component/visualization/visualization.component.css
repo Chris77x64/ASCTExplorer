@@ -1,0 +1,42 @@
+#main{
+  height: 100vh;
+}
+
+*, ::after, ::before {
+  box-sizing: content-box;
+}
+#header{
+  height: 10%;
+  background-color: #262626;
+  color: white;
+}
+
+#content{
+  height: 90%;
+}
+
+#drawing{
+
+}
+
+:host ::ng-deep .custom-spinner circle{
+  stroke: black;
+}
+
+#sideNAV{
+
+}
+.vega-container,
+.vega-container::after,
+.vega-container::before {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+}
+.vega-container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

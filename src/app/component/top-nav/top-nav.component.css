@@ -1,0 +1,111 @@
+*, ::after, ::before {
+  box-sizing: content-box;
+}
+.navbar{
+  padding-top: 0;
+}
+
+#iconsSmall{
+  display: none;
+}
+
+#searchSmall{
+  display: none;
+}
+
+
+
+#searchField{
+  margin-left: 2%;
+  width: calc(100% - 2%);
+  border: none;
+  outline: none;
+  min-width: 0;
+}
+
+.searchICON{
+  border: none;
+  transform: translate(10%,14%);
+  min-width: 0;
+}
+
+#searchFormGroup{
+  padding-top: 0.2vw;
+  padding-bottom: 0.2vw;
+  background-color: white;
+  color: black;
+  border: none;
+  white-space: nowrap;
+  min-width: 0;
+  margin-right: 0.5vw;
+  flex-basis: 35%;
+}
+
+@media (max-height: 700px) {
+  #iconsSmall{
+    display: block;
+  }
+  #iconsLarge{
+    display: none;
+  }
+  #searchLarge{
+    display: none;
+  }
+  #searchSmall{
+    display: block;
+  }
+}
+
+
+.btn-pad{
+  border: none;
+  background: none;
+  margin-right:1vw;
+  line-height: 2vh;
+  color: white;
+  white-space: nowrap;
+  min-width: 0;
+  min-height: 0;
+}
+
+#buttonList{
+  height: 100%;
+  justify-content: end;
+  flex-wrap: nowrap;
+  flex-direction: row-reverse;
+}
+
+#nav{
+  min-height: 0;
+}
+
+#organs{
+  flex-wrap: nowrap;
+  border-top: 1px solid white;
+}
+
+
+
+.c{
+  flex-basis: 0;
+  min-width: 0;
+
+}
+
+#brand{
+
+}
+
+#nav{
+  color: white;
+  border-bottom: 1px solid white;
+}
+
+
+
+.btn-css{
+  background-color: #262626;
+  color: white;
+  white-space: nowrap
+}
+

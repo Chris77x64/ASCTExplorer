@@ -1,0 +1,24 @@
+<div class="flex-container" role="main" id="main" style="display: flex;flex-direction: column;overflow: hidden">
+
+  <div  id="header" class="flex-container flex-row" style="display: flex;min-height: 90px">
+    <app-top-nav class="w-100 h-100"></app-top-nav>
+  </div>
+
+  <div class="flex-container d-flex" *ngIf="!sideNAVHidden" id="content">
+    <div class="h-100" style="width: 15% ;overflow-y: auto;direction: rtl">
+        <app-side-nav></app-side-nav>
+    </div>
+    <div  class="h-100" id="drawing" style="width: 85%;overflow-y:scroll;overflow-x: hidden" >
+      <div class="d-flex align-items-center w-100 h-100">
+        <mat-spinner *ngIf="this.initialLoad" class="custom-spinner" style="margin: 0 auto;" diameter="300" strokeWidth="10"></mat-spinner>
+      </div>
+    </div>
+  </div>
+
+  <div  class="flex-container d-flex" *ngIf="sideNAVHidden"  id="content">
+    <div class="h-100 w-100" id="drawing" style="overflow:scroll;">
+    </div>
+
+  </div>
+
+</div>

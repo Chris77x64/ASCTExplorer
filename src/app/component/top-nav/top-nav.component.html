@@ -1,0 +1,48 @@
+<div class="h-50 w-100 flex-container d-flex" id="nav" >
+
+  <div class="flex-col h-100 w-50 justify-content-start">
+    <span  class="align-items-center w-100 h-100" style="display: flex">
+            <!-- <img class="h-100" src="../assets/{{logo}}" > -->
+            <h3 class="" style="margin-left: 2%"> ASCT+B Explorer</h3>
+    </span>
+  </div>
+  <div class="flex-col h-100 w-50 justify-content-lg-end justify-content-sm-center">
+    <div class="d-flex align-items-center  w-100" id="buttonList">
+
+
+<!--        <fa-icon [icon]="faSearch" class="fa-lg searchICON" id="searchLarge" > text</fa-icon>-->
+<!--        <fa-icon [icon]="faSearch" class="fa-sm searchICON" id="searchSmall" > text</fa-icon>-->
+<!--        <input type="text" placeholder="Search" class="d-flex" id="searchField" class="align-content-center" >-->
+
+      <app-search class="h-75 w-25 btn-pad"> </app-search>
+      <button
+        *ngFor="let desc of buttonStrings; let i=index"
+        class="d-flex flex-column icon-btn btn-pad align-items-center"
+        (click)="buttonHandlers[buttonStrings.length-1-i]()"
+        matTooltip="{{this.buttonTooltips[buttonStrings.length-1-i]}}">
+        <div class="fa-lg " id="iconsLarge"> <fa-icon [icon]=buttonIcons[buttonStrings.length-1-i] > </fa-icon></div>
+        <div class="fa-sm" id="iconsSmall"> <fa-icon [icon]=buttonIcons[buttonStrings.length-1-i] > </fa-icon></div>
+        <div  style="text-align: center"> {{buttonStrings[buttonStrings.length-1-i]}}</div>
+      </button>
+
+
+<!--      <div class="d-flex h-100 w-25" >-->
+<!--        <app-search class="w-100 h-100"> </app-search>-->
+<!--      </div>-->
+      </div>
+  </div>
+</div>
+
+
+<div class="flex-container d-flex align-items-center h-50 w-100 btn-group" id="organs" >
+  <label *ngFor="let organ of organStrings; let i=index" class="btn btn-css h-50 c flex-column"  id="{{i}}l" style="display: flex;justify-content: center">
+    <input
+      type="radio"
+      class="btn-color2"
+      id="{{i}}"
+      (click)="organClicked($event)"
+      style="display: none"
+      > <!--- style="display: none"-->
+    <span matTooltip="Draw organ {{organ}}"> {{organ}}</span>
+  </label>
+</div>

@@ -1,0 +1,42 @@
+/*::ng-deep .mat-checkbox .mat-checkbox-label {*/
+/*  width: 550px;*/
+/*  !*width: auto; calc(27vw);*!*/
+/*}*/
+
+.search-modal {
+  background: white;
+  color: black;
+  position: absolute;
+  width: 30vw;
+  height: 50vh;
+  top: 0;
+  /*top: calc(5vh*0.1);*/
+  right: 0;
+  z-index: 20;
+  border-bottom: 0.1875rem solid rgba(68, 74, 101, 0.063);
+  border-radius: 0.25rem;
+}
+
+#searchWrapper1{
+  background-color: white;
+}
+
+#searchWrapper2{
+  flex-wrap: wrap;
+}
+#searchWrapper3{
+  align-items: center;
+  display: flex
+}
+
+#searchButtonWrapper{
+  gap: 1vw;
+}
+
+.searchButton{
+  background-color: black;
+  color: white;
+  display: flex;
+  white-space: pre-wrap;
+  align-items: center
+}

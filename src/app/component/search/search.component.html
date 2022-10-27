@@ -1,0 +1,91 @@
+<div class="h-100 w-100 d-flex align-items-center" style="background-color: white; color: black">
+  <fa-icon [icon]="faSearch" class="fa-lg" id="searchLarge" style="margin-left: 1%"> </fa-icon>
+  <button class="w-100 d-flex justify-content-between" style="background-color: white; color: black; border: white" (click)="this.openSearchList()">
+      <span class="" style="margin-left: 1%"> Search </span>
+      <fa-icon class="" [icon]="faAngleDown" class="fa-lg flex-row col-md-1" style="margin-right: 1%"> </fa-icon>
+  </button>
+</div>
+
+
+<div *ngIf="this.searchOpen" class="search-modal mat-elevation-z4 card" #searchModal>
+  <div class="h-25 card-header" id="searchWrapper1" >
+    <div class="h-100 w-100 d-flex" id="searchWrapper2">
+      <div class="w-100 h-50" id="searchWrapper3">
+        <mat-form-field
+          appearance="legacy"
+          floatLabel="never" class="w-100">
+          <input matInput cdkFocusInitial #searchField
+                 placeholder="Search Structures"
+                 [(ngModel)]="this.searchValue"
+                 (input)= this.filterSearchSet()
+          />
+          <button mat-button matSuffix mat-icon-button
+                  #clearBtn
+                  aria-label="Clear Search"
+                  *ngIf="this.searchValue !=''"
+                  (click)="clearSearchText()"
+                  matTooltip="Clear Search"
+                  style="margin-right: 0.5vw;background-color: white;color: black;border: white">
+            <fa-icon class="" [icon]="faTimes" class="fa-lg flex-row col-md-1" > </fa-icon>
+          </button>
+          <button mat-button matSuffix mat-icon-button
+                  aria-label="Close"
+                  matTooltip="Close" style="background-color: white;color: black;border: white"
+                  (click)="this.leaveSearchComponent()">
+            <fa-icon class="" [icon]="faAngleUp" class="fa-lg flex-row col-md-1" > </fa-icon>
+          </button>
+        </mat-form-field>
+      </div>
+
+      <div class="w-100 h-50 d-flex justify-content-between">
+
+        <div class="d-flex align-items-center w-50 h-100">
+          <span id="label">Show only:</span>
+          <mat-button-toggle-group multiple
+                                   #group="matButtonToggleGroup"
+                                   name="searchFilterButtons"
+                                   aria-label="searchFilterButtons"
+                                   style="margin-left: 2%;display: flex;align-items: center;height: 90%"
+                                    (click)="this.toggleSearchSetUpdate()">
+            <mat-button-toggle [checked]="this.asSelected" value="Anatomical Structures" matTooltip="Anatomical Structures" (change)="this.asSelected=$event.source.checked">AS</mat-button-toggle>
+            <mat-button-toggle [checked]="this.ctSelected" value="Cell Types" matTooltip="Cell Types" (change)="this.ctSelected=$event.source.checked">CT</mat-button-toggle >
+            <mat-button-toggle [checked]="this.bmSelected" value="Biomarkers" matTooltip="Biomarkers" (change)="this.bmSelected=$event.source.checked">B</mat-button-toggle>
+          </mat-button-toggle-group>
+        </div>
+
+        <div class="d-flex align-items-center justify-content-end w-50 h-100" id="searchButtonWrapper">
+          <button class="selectBtn h-75 searchButton" mat-raised-button
+                  aria-label="Clear"
+                  (click)="this.clearSelection()"
+                  matTooltip="Clear the current selection and all displayed rectangles inside the drawing"
+          >Clear</button>
+          <button class="selectBtn h-75 searchButton" mat-raised-button
+                  aria-label="Induce"
+                  matTooltip="Switch to exploration mode and explore the subgraph induced by the last selected vertex"
+                  (click)="this.induce()"
+          >Induce</button>
+        </div>
+
+      </div>
+
+  </div>
+  </div>
+  <div class="h-75 card-body">
+    <mat-selection-list class="h-100" style="overflow: auto" #selectionList>
+      <mat-list-option
+        checkboxPosition="before"
+        *ngFor="let structure of this.searchSet; let i =index"
+        [value]="structure.id"
+        [selected]="structure.selected"
+        (click)=this.selectSearchItem($event)
+        class="">
+          <div class="d-flex justify-content-between h-100" style="gap: 1vw">
+            <div class="h-100" style="white-space: pre-wrap">{{structure.name}} </div>
+            <div [style.color]="structure.color" class="d-flex align-content-end" style="white-space: pre-wrap; text-align: end">
+              <span>{{structure.groupName}} </span>
+            </div>
+          </div>
+      </mat-list-option>
+    </mat-selection-list>
+  </div>
+</div>

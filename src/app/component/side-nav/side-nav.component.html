@@ -1,0 +1,182 @@
+<div class="card h-100 flex-container flex-column" style="background-color: rgba(0, 0, 0, 0.05);direction: ltr" id="sideNavID">
+
+  <div class="card w-100 cardClass">
+    <mat-expansion-panel
+      [expanded]="vc.sideNavContainer1Expanded"
+      (afterExpand)="vc.sideNavContainer1Expanded = !vc.sideNavContainer1Expanded"
+      (afterCollapse)="vc.sideNavContainer1Expanded = !vc.sideNavContainer1Expanded"
+    >
+
+      <mat-expansion-panel-header class="expansionHeader">
+        <mat-panel-title class="w-100">
+          <div>
+            <b> Legend </b>
+          </div>
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+
+        <div class="cardContent" style="margin-top: 5%;margin-left: 8%">
+          <div *ngFor="let l of legends" class="d-flex flex-container w-100 navItem">
+
+            <div class="flex-column  ">
+              <div class="circle" [ngStyle]="{'background-color':l.color}"  >
+              </div>
+            </div>
+            <span class="d-flex legendText flex-column">{{ l.name }}</span>
+          </div>
+        </div>
+    </mat-expansion-panel>
+  </div>
+
+
+  <div class="card cardClass" >
+    <mat-expansion-panel
+      [expanded]="vc.sideNavContainer2Expanded"
+      (afterExpand)="vc.sideNavContainer2Expanded = !vc.sideNavContainer2Expanded"
+      (afterCollapse)="vc.sideNavContainer2Expanded = !vc.sideNavContainer2Expanded"
+    >
+
+      <mat-expansion-panel-header class="expansionHeader">
+        <mat-panel-title class="w-100">
+          <div>
+            <b> Modes of Operation: </b>
+          </div>
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <div class="cardContent">
+        <mat-selection-list  multiple (selectionChange)="disableSelectionChange($event.option)">
+          <mat-list-option
+            checkboxPosition="before"
+            *ngFor="let s of vc.modes;let i=index"
+            (click)="modeSelect(i)"
+            [selected]=s.sel
+          matTooltip="{{this.modeTooltip[i]}}">
+            {{ s.label }}
+          </mat-list-option>
+        </mat-selection-list>
+
+      </div>
+    </mat-expansion-panel>
+  </div>
+
+    <div class="card cardClass">
+      <mat-expansion-panel
+        [expanded]="vc.sideNavContainer3Expanded"
+        (afterExpand)="vc.sideNavContainer3Expanded = !vc.sideNavContainer3Expanded"
+        (afterCollapse)="vc.sideNavContainer3Expanded = !vc.sideNavContainer3Expanded"
+      >
+
+        <mat-expansion-panel-header class="expansionHeader">
+          <mat-panel-title class="w-100">
+            <div>
+              <b> Containment </b>
+            </div>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <div class="cardContent">
+
+          <mat-selection-list appearance="fill"
+                              (selectionChange)="disableSelectionChange2($event.option)"
+                              matTooltip="Containment is a fixed hierarchical ordering of cell types that supports both expansion and collapse of containers. Collapsed
+                              Container are indicated by a black vertex with a label that counts involved biomarker (Complete Graph) or the number of distinct anatomical structures
+                              (Partial Graph)">
+            <mat-list-option #fff checkboxPosition="before" [selected]="vc.containmentSelect"   (click)="containmentSelection()"> <!-- [selected]="vc.containmentSelect" -->
+              Enable Containment
+            </mat-list-option>
+
+          </mat-selection-list>
+
+
+          <mat-form-field
+            appearance="fill"
+            class="w-100"
+            matTooltip="Select one of the following top-level container in order to have a compact representation of the containment">
+            <mat-label>Choose Container:</mat-label>
+          <mat-select
+            [(value)]="vc.selectedContainer"
+            placeholder="All Container"
+            #containmentForm
+            (selectionChange)="this.handleContainerSelect()"
+            (click)="debug()"
+            >
+            <mat-option  value="All Container">All Container</mat-option>
+            <mat-option  *ngFor="let s of vc.containerStrings;let i=index" value="{{s}}" >{{s}}</mat-option>
+          </mat-select>
+          </mat-form-field>
+
+
+
+        </div>
+      </mat-expansion-panel>
+    </div>
+
+  <div class="card cardClass">
+    <mat-expansion-panel
+      [expanded]="vc.sideNavContainer4Expanded"
+      (afterExpand)="vc.sideNavContainer4Expanded = !vc.sideNavContainer4Expanded"
+      (afterCollapse)="vc.sideNavContainer4Expanded = !vc.sideNavContainer4Expanded"
+    >
+
+      <mat-expansion-panel-header class="expansionHeader">
+        <mat-panel-title class="w-100">
+          <div>
+            <b> Appearance </b>
+          </div>
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <div class="cardContent flex-column d-flex">
+
+        <mat-selection-list  multiple>
+          <mat-list-option
+            checkboxPosition="before"
+            *ngFor="let s of vc.appearance;let i=index"
+            (click)="appearanceSelect(i)"
+            [selected]=s.sel
+            matTooltip="{{this.appearanceTooltip[i]}}">
+            {{ s.label }}
+          </mat-list-option>
+        </mat-selection-list>
+
+        <mat-form-field
+          appearance="fill"
+          class="w-100"
+          (keydown)="$event.stopPropagation()"
+          matTooltip="Apply rotation as linear map on the drawing">
+          <mat-label>Apply Rotation:</mat-label>
+          <mat-select [(value)]="vc.selectedRotation" placeholder="0 Degree" #rotationForm>
+            <mat-option value="0 Degree" (click)="this.restore0180()">0 Degree</mat-option>
+            <mat-option value="90 Degree" (click)="this.restore90270()">90 Degree</mat-option>
+            <mat-option value="180 Degree" (click)="this.restore0180()">180 Degree</mat-option>
+            <mat-option value="270 Degree" (click)="this.restore90270()">270 Degree</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+      </div>
+
+    </mat-expansion-panel>
+  </div>
+
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-modal="true"
+     role="dialog" (click)="closeModal()">
+  <div class="modal-dialog h-100 d-flex justify-content-center align-items-center" style="transform: translateY(-15%)" role="document">
+    <div class="modal-content ">
+      <div class="modal-header ">
+        <h5 class="w-100" style="text-align: center" id="exampleModalLabel" >Error</h5>
+      </div>
+      <div class="modal-body">
+        <p style="text-align: center; font-size: 2vh">
+          This feature is not supported yet
+        </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" (click)=closeModal()>Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal-backdrop fade show" id="backdrop" style="display: none;"></div>

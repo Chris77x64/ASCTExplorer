@@ -1,0 +1,46 @@
+
+.circle {
+  height: 0.9375rem;
+  width: 0.9375rem;
+  border-radius: 50%;
+  display: inline-block;
+  transform: translateY(8%);
+}
+
+.cardClass{
+  margin-bottom: 1%;
+}
+
+.mat-expansion-panel-header.mat-expanded:focus, .mat-expansion-panel-header.mat-expanded:hover {
+  background-color: #f5f5f5
+}
+
+.mat-slide-toggle.mat-checked .mat-slide-toggle-bar {
+  background-color: black !important;
+}
+.mat-slide-toggle.mat-checked .mat-slide-toggle-thumb{
+  background-color: black;
+}
+
+
+.expansionHeader{
+  background-color: #f5f5f5;
+  height: 4vh;
+  white-space: nowrap;
+}
+
+.legendText{
+  margin-left: 5%;
+}
+
+.cardContent{
+  margin-top: 2%;
+}
+
+.sliderPAD{
+  margin-bottom: 1vh;
+}
+
+.navItem{
+
+}

@@ -1,0 +1,97 @@
+#mainHeader{
+  background-color: #262626;
+}
+
+
+
+#navbarDIV{
+  color: white;
+}
+
+#navbarDIV a {
+  color: white;
+  padding-left: 1vw;
+}
+
+#collab{
+  background-color: black;
+  color: white;
+}
+
+#textDIV{
+  color: white;
+  text-align: center;
+}
+
+.spacerDIV10{
+  height: 10%;
+}
+.spacerDIV5{
+  height: 5%;
+}
+
+#laptop{
+  height: 55%;
+}
+
+
+#aboutText{
+  text-align: center;
+}
+
+#aboutMain{
+
+}
+
+
+#tutorialVideo{
+  height: 100%;
+  width: 100%;
+}
+
+iframe{
+  height: 100% !important;
+  width: 100% !important;
+}
+.autow {
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+}
+
+#impressumA:link{
+  color: white;
+}
+
+#aboutMain button:focus {
+  background-color: black;
+  border: 0.125rem solid black;
+  border-radius: 0.5rem;
+  border-left-width: 0.9375rem;
+  color: white;
+}
+
+
+.ss-header {
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-size: 14pt;
+}
+
+.section-selector {
+  text-align: left;
+  outline: none;
+  border: 0.125rem solid black;
+  border-radius: 0.5rem;
+  border-left-width: 0.9375rem;
+  background-color: white;
+  transition: all 0.2s;
+}
+.ss-desc {
+  color: grey;
+}
+
+
+.divPAD{
+  padding-top: 1vh;
+}
